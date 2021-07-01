@@ -27,6 +27,7 @@ jobs:
         with:
           elixir-version: '1.12.1'
           otp-version: '24.0.2'
+          experimental-otp: true
           install-rebar: true
           install-hex: true
       - run: mix deps.get
