@@ -13,7 +13,7 @@ COPY . .
 RUN mix do deps.get, compile
 RUN cd ${phoenix_subdir}/assets \
     && npm install \
-    && npm run deploy \
+    && NODE_ENV=production npm run deploy \
     && cd .. \
     && mix phx.digest
 RUN mix release ${app_name} \
