@@ -4,7 +4,7 @@
 
 If you are using asdf you can run `asdf install` to get the right elixir and node versions
 
-* elixir (1.12)
+* elixir (1.11)
 * node.js (14)
 * docker (https://docs.docker.com/get-docker/)
 

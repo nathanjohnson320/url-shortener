@@ -1,4 +1,4 @@
-FROM elixir:1.12.1-alpine
+FROM elixir:1.11.4-alpine
 
 ARG app_name=url_shortener
 ARG phoenix_subdir=.
