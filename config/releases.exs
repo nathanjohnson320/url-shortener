@@ -25,6 +25,7 @@ secret_key_base =
 
 config :url_shortener, UrlShortenerWeb.Endpoint,
   url: [
+    scheme: "https",
     host: "nj-url-shortener.herokuapp.com",
     port: String.to_integer(System.fetch_env!("PORT"))
   ],
