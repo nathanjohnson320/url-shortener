@@ -18,8 +18,17 @@ defmodule UrlShortenerWeb.UrlView do
   else.
   """
   def render_full_short_url(%{short_url: short_url}) do
-    UrlShortenerWeb.Endpoint.struct_url()
-    |> Map.put(:path, "/#{short_url}")
-    |> to_string()
+    uri =
+      UrlShortenerWeb.Endpoint.struct_url()
+      |> Map.put(:path, "/#{short_url}")
+
+    uri =
+      if Mix.env() == :prod do
+        Map.delete(uri, :port)
+      else
+        uri
+      end
+
+    to_string(uri)
   end
 end
