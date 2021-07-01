@@ -8,7 +8,7 @@ on:
 
 jobs:
   run-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-lts
     container: node:14
     services:
       postgres:
