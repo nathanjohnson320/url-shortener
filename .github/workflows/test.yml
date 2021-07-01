@@ -28,6 +28,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - run: mix local.rebar --force && mix local.hex --force
       - run: mix deps.get
       - run: mix deps.compile
       - run: npm install --prefix assets
