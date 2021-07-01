@@ -9,7 +9,7 @@ on:
 jobs:
   run-tests:
     runs-on: ubuntu-18.04
-    container: node:14
+    container: node:14-stretch
     services:
       postgres:
         image: postgres:12
