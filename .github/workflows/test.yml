@@ -9,7 +9,7 @@ on:
 jobs:
   run-tests:
     runs-on: ubuntu-20.04
-    container: elixir:1.12-alpine
+    container: elixir:1.12.1-alpine
     services:
       postgres:
         image: postgres:12
