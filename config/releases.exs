@@ -23,7 +23,7 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
-config :url_shortener, BobRossWeb.Endpoint,
+config :url_shortener, UrlShortenerWeb.Endpoint,
   url: [
     host: "nj-url-shortener.herokuapp.com",
     port: String.to_integer(System.fetch_env!("PORT"))
@@ -31,7 +31,7 @@ config :url_shortener, BobRossWeb.Endpoint,
   check_origin: ["//nj-url-shortener.herokuapp.com"],
   http: [
     port: String.to_integer(System.fetch_env!("PORT")),
-    transport_options: [socket_opts: [:inet6]]
+    transport_options: [socket_opts: []]
   ],
   server: true,
   code_reloader: false,
