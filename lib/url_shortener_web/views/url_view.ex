@@ -10,6 +10,13 @@ defmodule UrlShortenerWeb.UrlView do
     }
   end
 
+  @doc """
+  Given a short URL returns a full URL.
+
+  This could probably also go in the Urls context and
+  be called here. Maybe move it if we need it somewhere
+  else.
+  """
   def render_full_short_url(%{short_url: short_url}) do
     UrlShortenerWeb.Endpoint.struct_url()
     |> Map.put(:path, "/#{short_url}")
