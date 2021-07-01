@@ -31,7 +31,7 @@ config :url_shortener, BobRossWeb.Endpoint,
   check_origin: ["//nj-url-shortener.herokuapp.com"],
   http: [
     port: String.to_integer(System.fetch_env!("PORT")),
-    transport_options: [socket_opts: []]
+    transport_options: [socket_opts: [:inet6]]
   ],
   server: true,
   code_reloader: false,

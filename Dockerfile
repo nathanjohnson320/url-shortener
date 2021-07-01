@@ -25,8 +25,6 @@ RUN apk update \
     && apk --no-cache --update add bash ca-certificates openssl-dev libstdc++ libgcc \
     && mkdir -p /usr/local/bin
 ENV REPLACE_OS_VARS=true
-# For local dev, heroku will ignore this
-EXPOSE $PORT
 
 WORKDIR /opt/app
 COPY --from=0 /opt/release .
@@ -35,4 +33,4 @@ RUN chown -R elixir:elixir /opt/app
 USER elixir
 
 # Heroku sets magical $PORT variable so we need to pass it to our app's start
-CMD PORT=$PORT exec /opt/app/bin/start_server start 
+CMD ["sh", "-c", "PORT=$PORT /opt/app/bin/start_server start"]
