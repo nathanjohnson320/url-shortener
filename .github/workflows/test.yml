@@ -8,8 +8,10 @@ on:
 
 jobs:
   run-tests:
-    runs-on: ubuntu-18.04
-    container: node:14-stretch
+    # Make sure it's on 20.04
+    # https://github.com/erlef/setup-beam/issues/5
+    runs-on: ubuntu-20.04
+    container: node:14
     services:
       postgres:
         image: postgres:12
@@ -27,8 +29,6 @@ jobs:
         with:
           elixir-version: '1.12.1'
           otp-version: '24.0.2'
-          experimental-otp: true
-          install-rebar: true
           install-hex: true
       - run: mix deps.get
       - run: mix deps.compile
