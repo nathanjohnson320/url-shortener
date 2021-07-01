@@ -23,10 +23,12 @@ jobs:
           --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v1
+      - uses: erlef/setup-beam@v1
         with:
           elixir-version: '1.12.1'
           otp-version: '24.0.2'
+          install-rebar: true
+          install-hex: true
       - run: mix deps.get
       - run: mix deps.compile
       - run: npm install --prefix assets
