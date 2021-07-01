@@ -6,7 +6,7 @@ ARG build_env=prod
 ENV MIX_ENV=${build_env} TERM=xterm
 WORKDIR /opt/app
 RUN apk update \
-    && apk --no-cache --update add nodejs npm \
+    && apk --no-cache --update add nodejs npm libstdc++ libgcc \
     && mix local.rebar --force \
     && mix local.hex --force
 COPY . .
