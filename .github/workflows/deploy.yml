@@ -26,3 +26,6 @@ jobs:
 
       - name: "Releases the container"
         run: heroku container:release web --app ${{secrets.HEROKU_APP_NAME}}
+
+      - name: "Runs the migrations"
+        run: heroku run "bin/start_server eval 'UrlShortener.Release.migrate()'" --app ${{secrets.HEROKU_APP_NAME}}
