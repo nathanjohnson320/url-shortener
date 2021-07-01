@@ -11,7 +11,7 @@ jobs:
     # Make sure it's on 20.04
     # https://github.com/erlef/setup-beam/issues/5
     runs-on: ubuntu-20.04
-    container: node:14
+    container: elixir:1.12-alpine
     services:
       postgres:
         image: postgres:12
@@ -25,10 +25,9 @@ jobs:
           --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      - uses: erlef/setup-beam@v1
+      - uses: actions/setup-node@v2
         with:
-          elixir-version: '1.11'
-          otp-version: '23'
+          node-version: '14'
       - run: mix deps.get
       - run: mix deps.compile
       - run: npm install --prefix assets
