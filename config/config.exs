@@ -18,6 +18,9 @@ config :url_shortener, UrlShortenerWeb.Endpoint,
   pubsub_server: UrlShortener.PubSub,
   live_view: [signing_salt: "FKuZua/5"]
 
+# Set the env so we have access at runtime
+config :url_shortener, env: Mix.env()
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
