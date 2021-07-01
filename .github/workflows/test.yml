@@ -27,9 +27,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: erlef/setup-beam@v1
         with:
-          elixir-version: '1.12.1'
-          otp-version: '24.0.2'
-          install-hex: true
+          elixir-version: '1.11'
+          otp-version: '23'
       - run: mix deps.get
       - run: mix deps.compile
       - run: npm install --prefix assets
