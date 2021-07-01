@@ -1,7 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -16,4 +15,8 @@ module.exports = {
   plugins: [
     require('@tailwindcss/forms'),
   ],
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: ["./js/**/*.jsx", "../lib/**/*.html.eex"],
+  },
 }
