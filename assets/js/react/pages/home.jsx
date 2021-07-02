@@ -14,13 +14,13 @@ async function handleSubmit({
     // Clear existing data and errors before submit
     setUrl(null);
     setErrors({});
-    const { data: url } = await create(form);
+    const url = await create(form);
 
     // On Success set the url to the response and clear the form
     setUrl(url);
     setForm({});
   } catch (err) {
-    setErrors(err?.response?.data?.errors || err?.response?.data);
+    setErrors(err.errors || err);
   }
 }
 

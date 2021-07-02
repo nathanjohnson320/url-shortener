@@ -10,8 +10,6 @@ If you are using asdf you can run `asdf install` to get the right elixir and nod
 
 ## TODO
 
-* Swap out Form for Input and Button
-* Test the Home
 * A cypress test
 * Rate limiting
   * https://github.com/michalmuskala/plug_attack

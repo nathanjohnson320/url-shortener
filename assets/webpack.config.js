@@ -37,6 +37,7 @@ module.exports = (env, options) => {
             extensions: ['*', '.js', '.jsx'],
             alias: {
               '@components': path.resolve(__dirname, 'js/react/components/'),
+              '@pages': path.resolve(__dirname, 'js/react/pages/'),
               '@utility': path.resolve(__dirname, 'js/utility'),
               '@http': path.resolve(__dirname, 'js/http'),
               '@api': path.resolve(__dirname, 'js/api'),

@@ -1,9 +1,8 @@
-import { http, buildUrl } from '@http';
+import { http } from '@http';
 
-export const create = (params) => {
-  const url = buildUrl('url');
-  return http.post(url, params);
-};
+export const create = (params) => (
+  http.post('url', params)
+);
 
 export default {
   create,

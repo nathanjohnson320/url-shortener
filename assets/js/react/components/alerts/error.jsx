@@ -10,7 +10,7 @@ function ErrorAlert({ errors, name }) {
   }
 
   return (
-    <div className="rounded-md bg-red-50 p-4">
+    <div className="rounded-md bg-red-50 p-4" role="alert">
       <div className="flex">
         <div className="flex-shrink-0">
           <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
@@ -49,7 +49,7 @@ ErrorAlert.defaultProps = {
 
 ErrorAlert.propTypes = {
   name: PropTypes.string,
-  errors: PropTypes.objectOf(PropTypes.string).isRequired,
+  errors: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
 };
 
 export default ErrorAlert;

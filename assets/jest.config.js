@@ -86,6 +86,7 @@ module.exports = {
     '^@http(.*)$': '<rootDir>/js/http',
     '^@api(.*)$': '<rootDir>/js/api/$1',
     '^@components(.*)$': '<rootDir>/js/react/components/$1',
+    '^@pages(.*)$': '<rootDir>/js/react/pages/$1',
     '^@swr(.*)$': '<rootDir>/js/react/swr/$1',
   },
 

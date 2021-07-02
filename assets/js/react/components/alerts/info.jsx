@@ -4,7 +4,7 @@ import { InformationCircleIcon } from '@heroicons/react/solid';
 
 function InfoAlert({ title, children }) {
   return (
-    <div className="rounded-md bg-blue-50 p-4">
+    <div className="rounded-md bg-blue-50 p-4" role="alert">
       <div className="flex">
         <div className="flex-shrink-0">
           <InformationCircleIcon className="h-5 w-5 text-blue-400" aria-hidden="true" />

@@ -1,9 +1,11 @@
 {
   "extends": ["airbnb", "airbnb/hooks"],
+  "plugins": ["jest"],
   "parserOptions": {
     "ecmaVersion": 2020
   },
   "env": {
+    "jest/globals": true,
     "browser": true
   },
   "settings": {
@@ -11,6 +13,7 @@
       "alias": {
         "map": [
           ["@components", "./js/react/components/"],
+          ["@pages", "./js/react/pages/"],
           ["@utility", "./js/utility"],
           ["@http", "./js/http"],
           ["@api", "./js/api"]

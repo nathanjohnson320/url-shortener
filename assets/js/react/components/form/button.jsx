@@ -2,7 +2,12 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-function Button({ color, children, ...rest }) {
+function Button({
+  type,
+  color,
+  children,
+  ...rest
+}) {
   let classes = '';
   switch (color) {
     case 'light':
@@ -14,7 +19,7 @@ function Button({ color, children, ...rest }) {
 
   return (
     <button
-      type="submit"
+      type={type}
       className={classes}
       {...rest}
     >
@@ -28,6 +33,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  type: PropTypes.string.isRequired,
   color: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
