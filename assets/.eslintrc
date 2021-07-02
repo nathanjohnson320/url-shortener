@@ -1,0 +1,27 @@
+{
+  "extends": ["airbnb", "airbnb/hooks"],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "env": {
+    "browser": true
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@components", "./js/react/components/"],
+          ["@utility", "./js/utility"],
+          ["@http", "./js/http"],
+          ["@api", "./js/api"]
+        ],
+        "extensions": [".js", ".jsx", ".json"]
+      }
+    }
+  },
+  "rules": {
+    "react/jsx-props-no-spreading": [2, {
+      "html": "ignore",
+    }]
+  }
+}

@@ -1,5 +1,7 @@
 import React from 'react';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import {
+  render, fireEvent, waitFor, screen,
+} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 import Form from '@components/input/form';
@@ -36,7 +38,7 @@ describe('Form', () => {
         </select>
 
         <button type="submit">Submit</button>
-      </Form>
+      </Form>,
     );
 
     userEvent.click(screen.getByText('Checkbox'));
@@ -56,7 +58,7 @@ describe('Form', () => {
     expect(fetch.mock.calls[0][1].body).toEqual(JSON.stringify({
       checkbox: true,
       text: 'Test Input',
-      select: ['a','b'],
+      select: ['a', 'b'],
     }));
   });
 
@@ -68,17 +70,16 @@ describe('Form', () => {
       >
         <label htmlFor="text">Text</label>
         <input type="text" id="text" name="text" />
-      </Form>
+      </Form>,
     );
 
     userEvent.type(screen.getByLabelText('Text'), 'Test');
     expect(screen.getByLabelText('Text')).toHaveValue('Test');
 
     expect(onInput.mock.calls.length).toEqual(4);
-    expect(onInput.mock.calls[0][0]).toEqual({text: 'T'});
-    expect(onInput.mock.calls[1][0]).toEqual({text: 'Te'});
-    expect(onInput.mock.calls[2][0]).toEqual({text: 'Tes'});
-    expect(onInput.mock.calls[3][0]).toEqual({text: 'Test'});
+    expect(onInput.mock.calls[0][0]).toEqual({ text: 'T' });
+    expect(onInput.mock.calls[1][0]).toEqual({ text: 'Te' });
+    expect(onInput.mock.calls[2][0]).toEqual({ text: 'Tes' });
+    expect(onInput.mock.calls[3][0]).toEqual({ text: 'Test' });
   });
 });
-

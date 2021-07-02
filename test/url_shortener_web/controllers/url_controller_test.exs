@@ -12,13 +12,16 @@ defmodule UrlShortenerWeb.UrlControllerTest do
       })
 
     assert %{
-             "long_url" =>
+             "longUrl" =>
                "https://www.google.com/search?q=url+shortener&oq=google+u&aqs=chrome.0.69i59j69i60l3j0j69i57.1069j0j7&sourceid=chrome&ie=UTF-8",
              "id" => id,
-             "short_url" => short_url
+             "shortUrl" => short_url,
+             "fullShortUrl" => full_short_url
            } = json_response(conn, 200)
 
-    assert short_url == Generator.encode(id)
+    short_code = Generator.encode(id)
+    assert short_url == short_code
+    assert full_short_url == "http://localhost:4002/#{short_code}"
   end
 
   test "GET /*short_url", %{conn: conn} do

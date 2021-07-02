@@ -21,4 +21,5 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './react/app';
 
+/* eslint react/jsx-filename-extension: 0 */
 ReactDOM.render(<App />, document.getElementById('app'));

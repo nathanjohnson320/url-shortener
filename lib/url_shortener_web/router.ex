@@ -11,6 +11,7 @@ defmodule UrlShortenerWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug ProperCase.Plug.SnakeCaseParams
   end
 
   scope "/api", UrlShortenerWeb do

@@ -51,7 +51,8 @@ defmodule UrlShortener.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:hashids, "~> 2.0"}
+      {:hashids, "~> 2.0"},
+      {:proper_case, "~> 1.0.2"}
     ]
   end
 

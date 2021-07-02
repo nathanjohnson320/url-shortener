@@ -5,3 +5,6 @@ export const create = (params) => {
   return http.post(url, params);
 };
 
+export default {
+  create,
+};

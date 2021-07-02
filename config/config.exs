@@ -29,6 +29,9 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# When encoding json for the client use camel case
+config :phoenix, :format_encoders, json: UrlShortenerWeb.CustomJSONEncoder
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

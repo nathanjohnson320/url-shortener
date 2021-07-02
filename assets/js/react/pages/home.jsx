@@ -1,26 +1,36 @@
 import React, { useState } from 'react';
-import Form from '@components/input/form';
+import Input from '@components/form/input';
+import Button from '@components/form/button';
 import ErrorAlert from '@components/alerts/error';
 import InfoAlert from '@components/alerts/info';
 import { create } from '@api/url';
 
-async function handleSubmit(data, setUrl, setErrors) {
+async function handleSubmit({
+  e, form, setUrl, setErrors, setForm,
+}) {
   try {
+    e.preventDefault();
+
+    // Clear existing data and errors before submit
     setUrl(null);
     setErrors({});
-    const {data: url} = await create(data);
+    const { data: url } = await create(form);
+
+    // On Success set the url to the response and clear the form
     setUrl(url);
-  } catch(err) {
+    setForm({});
+  } catch (err) {
     setErrors(err?.response?.data?.errors || err?.response?.data);
   }
 }
 
 function handleCopy(url) {
-  navigator.clipboard.writeText(url.full_short_url);
+  navigator.clipboard.writeText(url.fullShortUrl);
 }
 
 export default function Home() {
   const [url, setUrl] = useState(null);
+  const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
 
   return (
@@ -76,60 +86,63 @@ export default function Home() {
                 </p>
               </div>
 
-              <Form
+              <form
                 id="url-shortener-form"
-                onSubmit={(e) => handleSubmit(e, setUrl, setErrors)}
+                onSubmit={(e) => handleSubmit({
+                  e, form, setUrl, setErrors, setForm,
+                })}
                 className="mt-12 sm:mx-auto sm:max-w-lg"
               >
                 <ErrorAlert errors={errors} className="min-w-0" />
                 {
-                  url &&
+                  url
+                    && (
                     <InfoAlert title="Shortened Successfully!">
                       <div className="mt-2 text-sm text-blue-700">
-                        <a href={url.full_short_url}>
-                          Shortened URL: <span className="underline">{url.full_short_url}</span>
+                        <a href={url.fullShortUrl}>
+                          Shortened URL:
+                          {' '}
+                          <span className="underline">{url.fullShortUrl}</span>
                         </a>
                       </div>
 
                       <div className="mt-4">
                         <div className="-mx-2 -my-1.5 flex">
-                          <button
+                          <Button
                             type="button"
                             onClick={() => { handleCopy(url); }}
-                            className="bg-blue-50 px-2 py-1.5 rounded-md text-sm font-medium text-blue-800 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-50 focus:ring-blue-600"
+                            color="light"
                           >
                             Copy to Clipboard
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     </InfoAlert>
+                    )
                 }
 
                 <div className="sm:flex mt-3">
                   <div className="min-w-0 flex-1">
-                    <label htmlFor="long_url" className="sr-only">
-                      Long Url
-                    </label>
-                    <input
-                      id="long_url"
-                      name="long_url"
+                    <Input
+                      name="longUrl"
+                      label="Long Url"
                       type="text"
-                      required
-                      className="block w-full border border-transparent rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
                       placeholder="Enter a long URL"
+                      value={form.longUrl || ''}
+                      onChange={(e) => setForm({ ...form, longUrl: e.target.value })}
+                      required
                     />
                   </div>
 
                   <div className="mt-4 sm:mt-0 sm:ml-3">
-                    <button
+                    <Button
                       type="submit"
-                      className="block w-full rounded-md border border-transparent px-5 py-3 bg-indigo-500 text-base font-medium text-white shadow hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 sm:px-10"
                     >
                       Shorten
-                    </button>
+                    </Button>
                   </div>
                 </div>
-              </Form>
+              </form>
             </div>
           </div>
         </div>
@@ -137,4 +150,3 @@ export default function Home() {
     </div>
   );
 }
-

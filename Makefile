@@ -22,5 +22,4 @@ server:
 # your test suite.
 test:
 	mix test
-	mix cypress
 	npm run test --prefix assets
