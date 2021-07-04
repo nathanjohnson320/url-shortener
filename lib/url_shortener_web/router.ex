@@ -8,6 +8,7 @@ defmodule UrlShortenerWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug RemoteIp
+    plug UrlShortenerWeb.Plugs.RateLimit
   end
 
   pipeline :api do

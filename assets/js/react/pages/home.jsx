@@ -102,7 +102,7 @@ export default function Home() {
                         <a href={url.fullShortUrl}>
                           Shortened URL:
                           {' '}
-                          <span className="underline">{url.fullShortUrl}</span>
+                          <span data-test-short-url className="underline">{url.fullShortUrl}</span>
                         </a>
                       </div>
 

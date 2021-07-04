@@ -23,3 +23,4 @@ server:
 test:
 	mix test
 	npm run test --prefix assets
+	mix cypress
