@@ -16,6 +16,16 @@ const BASE = '/api';
  */
 const buildUrl = (uri) => `${BASE}/${uri}`;
 
+async function safeParseJson(response) {
+  try {
+    const json = await response.clone().json();
+    return json;
+  } catch (e) {
+    const text = await response.clone().text();
+    return text;
+  }
+}
+
 const http = {
   async post(url, data, headers) {
     const response = await fetch(buildUrl(url), {
@@ -28,7 +38,7 @@ const http = {
       body: JSON.stringify(data),
     });
 
-    const json = await response.json();
+    const json = await safeParseJson(response);
     if (!response.ok) {
       return Promise.reject(json);
     }

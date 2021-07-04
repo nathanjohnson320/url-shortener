@@ -52,7 +52,9 @@ defmodule UrlShortener.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:hashids, "~> 2.0"},
-      {:proper_case, "~> 1.0.2"}
+      {:proper_case, "~> 1.0.2"},
+      {:plug_attack, "~> 0.4.2"},
+      {:remote_ip, "~> 1.0"}
     ]
   end
 

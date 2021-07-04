@@ -14,7 +14,8 @@ defmodule UrlShortener.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: UrlShortener.PubSub},
       # Start the Endpoint (http/https)
-      UrlShortenerWeb.Endpoint
+      UrlShortenerWeb.Endpoint,
+      {PlugAttack.Storage.Ets, name: UrlShortener.PlugAttack.Storage, clean_period: 60_000}
       # Start a worker by calling: UrlShortener.Worker.start_link(arg)
       # {UrlShortener.Worker, arg}
     ]

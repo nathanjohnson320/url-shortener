@@ -19,6 +19,7 @@ function Button({
 
   return (
     <button
+      /* eslint-disable react/button-has-type */
       type={type}
       className={classes}
       {...rest}
