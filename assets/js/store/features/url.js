@@ -31,7 +31,9 @@ export const urlsSlice = createSlice({
   },
 });
 
-export const { setErrors, receiveUrl, setUrl, loading } = urlsSlice.actions;
+export const {
+  setErrors, receiveUrl, setUrl, loading,
+} = urlsSlice.actions;
 
 export const createUrl = createAsyncThunk(
   'url',

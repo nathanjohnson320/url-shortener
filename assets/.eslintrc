@@ -16,7 +16,8 @@
           ["@pages", "./js/react/pages/"],
           ["@utility", "./js/utility"],
           ["@http", "./js/http"],
-          ["@api", "./js/api"]
+          ["@api", "./js/api"],
+          ["@features", "./js/store/features"]
         ],
         "extensions": [".js", ".jsx", ".json"]
       }
