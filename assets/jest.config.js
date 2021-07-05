@@ -87,7 +87,8 @@ module.exports = {
     '^@api(.*)$': '<rootDir>/js/api/$1',
     '^@components(.*)$': '<rootDir>/js/react/components/$1',
     '^@pages(.*)$': '<rootDir>/js/react/pages/$1',
-    '^@swr(.*)$': '<rootDir>/js/react/swr/$1',
+    '^@features(.*)$': '<rootDir>/js/store/features/$1',
+    '^@test-utils(.*)$': '<rootDir>/test/test-utils.jsx',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

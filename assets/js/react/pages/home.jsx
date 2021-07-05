@@ -1,37 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Input from '@components/form/input';
 import Button from '@components/form/button';
 import ErrorAlert from '@components/alerts/error';
 import InfoAlert from '@components/alerts/info';
-import { create } from '@api/url';
-
-async function handleSubmit({
-  e, form, setUrl, setErrors, setForm,
-}) {
-  try {
-    e.preventDefault();
-
-    // Clear existing data and errors before submit
-    setUrl(null);
-    setErrors({});
-    const url = await create(form);
-
-    // On Success set the url to the response and clear the form
-    setUrl(url);
-    setForm({});
-  } catch (err) {
-    setErrors(err.errors || err);
-  }
-}
+import { createUrl, setUrl } from '@features/url';
 
 function handleCopy(url) {
   navigator.clipboard.writeText(url.fullShortUrl);
 }
 
 export default function Home() {
-  const [url, setUrl] = useState(null);
-  const [form, setForm] = useState({});
-  const [errors, setErrors] = useState({});
+  const url = useSelector((state) => state.urls.createdUrl);
+  const form = useSelector((state) => state.urls.newUrl);
+  const errors = useSelector((state) => state.urls.errors);
+  const dispatch = useDispatch();
 
   return (
     <div className="bg-white py-16 sm:py-24">
@@ -88,9 +71,11 @@ export default function Home() {
 
               <form
                 id="url-shortener-form"
-                onSubmit={(e) => handleSubmit({
-                  e, form, setUrl, setErrors, setForm,
-                })}
+                onSubmit={(e) => {
+                  e.preventDefault();
+
+                  dispatch(createUrl(form));
+                }}
                 className="mt-12 sm:mx-auto sm:max-w-lg"
               >
                 <ErrorAlert errors={errors} className="min-w-0" />
@@ -129,7 +114,9 @@ export default function Home() {
                       type="text"
                       placeholder="Enter a long URL"
                       value={form.longUrl || ''}
-                      onChange={(e) => setForm({ ...form, longUrl: e.target.value })}
+                      onChange={(e) => {
+                        dispatch(setUrl({ ...form, longUrl: e.target.value }));
+                      }}
                       required
                     />
                   </div>

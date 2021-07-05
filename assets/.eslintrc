@@ -25,6 +25,7 @@
   "rules": {
     "react/jsx-props-no-spreading": [2, {
       "html": "ignore",
-    }]
+    }],
+    "no-param-reassign": ["error", { "props": false }]
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   render, waitFor, screen,
-} from '@testing-library/react';
+} from '@test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 import Home from '@pages/home';

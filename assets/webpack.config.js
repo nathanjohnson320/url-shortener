@@ -41,6 +41,7 @@ module.exports = (env, options) => {
               '@utility': path.resolve(__dirname, 'js/utility'),
               '@http': path.resolve(__dirname, 'js/http'),
               '@api': path.resolve(__dirname, 'js/api'),
+              '@features': path.resolve(__dirname, 'js/store/features/'),
             },
           },
         },
