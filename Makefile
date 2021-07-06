@@ -7,7 +7,6 @@
 # anything else that needs to happen before your server is started
 # for the first time
 setup:
-	docker run -d -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres:latest
 	mix deps.get
 	npm install --prefix assets
 	mix ecto.setup

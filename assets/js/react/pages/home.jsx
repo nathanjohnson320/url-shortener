@@ -13,6 +13,7 @@ function handleCopy(url) {
 export default function Home() {
   const url = useSelector((state) => state.urls.createdUrl);
   const form = useSelector((state) => state.urls.newUrl);
+  const urls = useSelector((state) => state.urls.urls);
   const errors = useSelector((state) => state.urls.errors);
   const dispatch = useDispatch();
 
@@ -130,6 +131,57 @@ export default function Home() {
                   </div>
                 </div>
               </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-4">
+        <div className="flex flex-col">
+          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+              <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        URL
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        To
+                      </th>
+
+                      <th scope="col" className="relative px-6 py-3">
+                        <span className="sr-only">Go</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {urls.map((row, index) => (
+                      <tr key={row.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{row.fullShortUrl}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{row.longUrl}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                          <a
+                            href={row.fullShortUrl}
+                            className="text-indigo-600 hover:text-indigo-900"
+                            target="_blank"
+                            rel="nofollow noopener noreferrer"
+                          >
+                            Go
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

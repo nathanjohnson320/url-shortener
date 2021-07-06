@@ -1,9 +1,22 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { create } from '@api/url';
 
+function persistUrls(urls) {
+  window.localStorage.setItem('urls', JSON.stringify(urls));
+}
+
+function restoreUrls() {
+  const urls = window.localStorage.getItem('urls');
+  if (urls) {
+    return JSON.parse(urls);
+  }
+
+  return [];
+}
+
 const initialState = {
   loading: false,
-  urls: [],
+  urls: restoreUrls(),
   createdUrl: null,
   newUrl: {},
   errors: {},
@@ -37,7 +50,7 @@ export const {
 
 export const createUrl = createAsyncThunk(
   'url',
-  async (form, { dispatch }) => {
+  async (form, { dispatch, getState }) => {
     try {
       // Clear existing data and errors before submit
       dispatch(loading(true));
@@ -46,7 +59,11 @@ export const createUrl = createAsyncThunk(
 
       // Clear the form after submit
       dispatch(setUrl({}));
-      return dispatch(receiveUrl(url));
+      dispatch(receiveUrl(url));
+
+      persistUrls(getState().urls.urls);
+
+      return url;
     } catch (err) {
       return dispatch(setErrors(err.errors || err));
     } finally {
