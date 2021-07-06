@@ -165,9 +165,9 @@ export default function Home() {
                   <tbody>
                     {urls.map((row, index) => (
                       <tr key={row.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{row.fullShortUrl}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{row.longUrl}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <td className="px-6 py-4 text-sm font-medium text-gray-900">{row.fullShortUrl}</td>
+                        <td className="px-6 py-4 text-sm text-gray-500">{row.longUrl}</td>
+                        <td className="px-6 py-4 text-right text-sm font-medium">
                           <a
                             href={row.fullShortUrl}
                             className="text-indigo-600 hover:text-indigo-900"
