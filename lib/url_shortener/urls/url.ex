@@ -1,4 +1,7 @@
 defmodule UrlShortener.Urls.Url do
+  @moduledoc """
+  Database model for URLs
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

@@ -16,6 +16,8 @@ defmodule UrlShortener.DataCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
       alias UrlShortener.Repo
@@ -28,10 +30,10 @@ defmodule UrlShortener.DataCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(UrlShortener.Repo)
+    :ok = Sandbox.checkout(UrlShortener.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(UrlShortener.Repo, {:shared, self()})
+      Sandbox.mode(UrlShortener.Repo, {:shared, self()})
     end
 
     :ok

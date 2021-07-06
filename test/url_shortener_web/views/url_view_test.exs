@@ -1,8 +1,8 @@
 defmodule UrlShortenerWeb.UrlViewTest do
   use UrlShortenerWeb.ConnCase, async: true
 
-  alias UrlShortenerWeb.UrlView
   alias UrlShortener.Urls
+  alias UrlShortenerWeb.UrlView
 
   describe "render_full_short_url/1" do
     test "should render a full url" do

@@ -1,4 +1,7 @@
 defmodule UrlShortenerWeb.Telemetry do
+  @moduledoc """
+  Metrics aggregator provided automatically by phoenix.
+  """
   use Supervisor
   import Telemetry.Metrics
 

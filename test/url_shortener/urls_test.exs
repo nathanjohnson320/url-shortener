@@ -1,8 +1,8 @@
 defmodule UrlShortener.UrlsTest do
   use UrlShortener.DataCase
 
-  alias UrlShortener.Urls
   alias UrlShortener.Generator
+  alias UrlShortener.Urls
 
   describe "urls" do
     alias UrlShortener.Urls.Url

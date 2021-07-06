@@ -26,7 +26,7 @@ defmodule UrlShortener.Release do
   @doc """
   bin/start_server eval 'UrlShortener.Release.seed()'
   """
-  def seed() do
+  def seed do
     filename = Application.app_dir(:url_shortener, "priv/repo/seeds.exs")
 
     for repo <- repos() do
@@ -41,7 +41,7 @@ defmodule UrlShortener.Release do
     end
   end
 
-  defp start_minimal() do
+  defp start_minimal do
     Application.ensure_all_started(:ssl)
     Application.load(@app)
   end

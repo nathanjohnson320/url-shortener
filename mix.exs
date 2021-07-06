@@ -54,7 +54,8 @@ defmodule UrlShortener.MixProject do
       {:hashids, "~> 2.0"},
       {:proper_case, "~> 1.0.2"},
       {:plug_attack, "~> 0.4.2"},
-      {:remote_ip, "~> 1.0"}
+      {:remote_ip, "~> 1.0"},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
   end
 
