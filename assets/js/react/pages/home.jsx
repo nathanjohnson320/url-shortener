@@ -15,6 +15,7 @@ export default function Home() {
   const form = useSelector((state) => state.urls.newUrl);
   const urls = useSelector((state) => state.urls.urls);
   const errors = useSelector((state) => state.urls.errors);
+  const loading = useSelector((state) => state.urls.loading);
   const dispatch = useDispatch();
 
   return (
@@ -74,6 +75,9 @@ export default function Home() {
                 id="url-shortener-form"
                 onSubmit={(e) => {
                   e.preventDefault();
+                  if (loading) {
+                    return;
+                  }
 
                   dispatch(createUrl(form));
                 }}
