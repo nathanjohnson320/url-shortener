@@ -10,7 +10,7 @@ beforeEach(() => {
   fetch.resetMocks();
 });
 
-describe('Form', () => {
+describe('Home', () => {
   test('submits our form and displays info alert', async () => {
     fetch.mockResponse(JSON.stringify({
       id: 1,
